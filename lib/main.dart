@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import './models/location.dart';
+import './location_list.dart';
 import './client/location.dart';
-import './location_detail.dart';
 
 void main() {
-  final Location location = LocationClient.fetchOne();
+  final locations = LocationClient.fetchAll();
 
   return runApp(MaterialApp(
-    home: LocationDetail(location),
+    home: LocationList(locations),
   ));
 }
