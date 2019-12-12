@@ -25,10 +25,12 @@ class LocationDetail extends StatelessWidget {
     var widgets = List<Widget>();
     widgets.add(_bannerImage(location.url, 170.0));
     widgets.addAll(_renderFacts(location.facts));
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: widgets,
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: widgets,
+      ),
     );
   }
 
