@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './location_detail.dart';
 import './styles.dart';
 import './models/location.dart';
 
@@ -13,13 +14,26 @@ class LocationList extends StatelessWidget {
       appBar: AppBar(title: Text("Locations", style: Styles.navBarTitle)),
       body: ListView.builder(
         itemCount: locations.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            contentPadding: EdgeInsets.all(10.0),
-            leading: _itemThumbnail(locations[index]),
-            title: _itemTitle(locations[index]),
-          );
-        },
+        itemBuilder: _listViewItemBuilder,
+      ),
+    );
+  }
+
+  Widget _listViewItemBuilder(BuildContext context, int index) {
+    var location = locations[index];
+    return ListTile(
+      contentPadding: EdgeInsets.all(10.0),
+      leading: _itemThumbnail(location),
+      title: _itemTitle(location),
+      onTap: () => _navigateToLocationDetail(context, location),
+    );
+  }
+
+  void _navigateToLocationDetail(BuildContext context, Location location) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LocationDetail(location),
       ),
     );
   }
